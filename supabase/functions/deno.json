@@ -1,0 +1,9 @@
+{
+  "nodeModulesDir": "auto",
+  "imports": {
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2.117.3",
+    "stripe": "npm:stripe@23.0.0",
+    "zod": "npm:zod@4.3.6"
+  },
+  "compilerOptions": {"strict":true,"lib":["deno.window","dom","dom.iterable"]}
+}

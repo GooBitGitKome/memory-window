@@ -1,0 +1,44 @@
+node_modules/
+dist/
+.env*
+!.env.example
+.DS_Store
+test-results/
+playwright-report/
+dist-demo/
+.supabase/
+
+# Local credentials, signing material, and machine-specific configuration
+.npmrc
+.netrc
+*.pem
+*.key
+*.p12
+*.p8
+*.jks
+*.keystore
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+local.properties
+
+# Local data, logs, archives, and generated reports
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.sql.gz
+*.log
+*.tar.gz
+*.tgz
+*.zip
+coverage/
+
+# User-supplied or private working files must stay outside public assets
+private/
+docs/private/
+apps/web/public/user-content/
+
+# Capacitor copies of built Web assets
+apps/web/ios/App/App/public/
+apps/web/android/app/src/main/assets/public/

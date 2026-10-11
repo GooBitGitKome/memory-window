@@ -1,0 +1,37 @@
+{
+  "name": "memory-window",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @memory-window/web",
+    "build": "npm run build -w @memory-window/web",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "mobile:sync": "npm run build && npm run mobile:sync -w @memory-window/web",
+    "test:e2e": "playwright test",
+    "build:demo": "npm run build:demo -w @memory-window/web",
+    "demo": "npm run build:demo && npm run demo:serve",
+    "demo:serve": "tsx scripts/demo-server.ts"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.8",
+    "@playwright/test": "^1.64.0",
+    "@types/node": "^22.0.0",
+    "stripe": "^23.0.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "overrides": {
+    "xcode": {
+      "uuid": "^11.1.1"
+    }
+  }
+}

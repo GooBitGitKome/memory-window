@@ -1,0 +1,135 @@
+/* Generated weather lives behind the room; the room mask opens only its two glass panes. */
+.scene {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #fff;
+  isolation: isolate;
+}
+.outdoor-weather {
+  position: absolute;
+  z-index: 0;
+  left: 53.9%;
+  top: 6.3%;
+  width: 40.9%;
+  height: 40.4%;
+  pointer-events: none;
+}
+.weather-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+.room-art {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+.character-sprite {
+  position: absolute;
+  z-index: 2;
+  left: 25%;
+  top: 28%;
+  height: 64%;
+  aspect-ratio: 2 / 3;
+  pointer-events: none;
+  animation: character-breathe 7s ease-in-out infinite;
+  transition: left .9s ease-in-out, top .9s ease-in-out, height .9s ease-in-out;
+}
+.character-sprite.character-seated {
+  left: 23%;
+  top: 48%;
+  height: 50%;
+  animation: none;
+}
+.character-pose {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: pose-appear .28s ease-out both;
+}
+.character-frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+}
+.character-frame.is-visible { opacity: 1; }
+.blink-frame { clip-path: inset(19% 33% 69% 33%); }
+.mouth-frame { clip-path: inset(27% 37% 65% 37%); }
+.state-walking .character-sprite { animation: character-step 1.8s ease-in-out infinite; }
+@keyframes character-breathe { 50% { transform: translateY(-.3%); } }
+@keyframes character-step { 50% { transform: translateX(1.5%); } }
+@keyframes pose-appear { from { opacity: .65; } to { opacity: 1; } }
+.wall-clock {
+  position: absolute;
+  z-index: 3;
+  left: 17%;
+  top: 11%;
+  width: 28%;
+  height: 16%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .2em;
+  border: 1.5px solid #444;
+  border-radius: 5px;
+  background: #fff;
+  color: #202020;
+  white-space: nowrap;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+  transition: opacity .5s ease;
+}
+.wall-date { font-size: clamp(10px, 1.65vw, 21px); font-weight: 600; }
+.wall-time { font-size: clamp(20px, 3.5vw, 44px); font-weight: 700; line-height: 1; letter-spacing: .03em; }
+.conversation-focused .character-sprite {
+  z-index: 4;
+  left: 5.5%;
+  top: -4%;
+  height: 200%;
+  animation: none;
+}
+.conversation-approaching .character-sprite {
+  animation: character-approach 2.6s ease-in-out both;
+}
+@keyframes character-approach {
+  0% { left: 25%; top: 28%; height: 64%; transform: translateY(0); }
+  18% { transform: translateY(-1.5%); }
+  34% { transform: translateY(0); }
+  52% { transform: translateY(-1.5%); }
+  68% { transform: translateY(0); }
+  84% { transform: translateY(-1%); }
+  100% { left: 5.5%; top: -4%; height: 200%; transform: translateY(0); }
+}
+.conversation-focused .wall-clock,
+.conversation-focused .scene-hotspot { opacity: 0; pointer-events: none; }
+.conversation-focused .room-art,
+.conversation-focused .outdoor-weather { opacity: .18; transition: opacity 1.6s ease; }
+.scene-main.conversation-mode .content-actions,
+.scene-main.conversation-mode .weather-settings { display: none; }
+@media (max-width: 700px) {
+  .wall-clock { left: 13%; top: 10%; width: 37%; height: 19%; }
+  .wall-date { font-size: clamp(11px, 3vw, 18px); }
+  .wall-time { font-size: clamp(23px, 6vw, 34px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .character-sprite, .character-pose { animation: none !important; }
+  .character-frame { opacity: 0 !important; }
+}

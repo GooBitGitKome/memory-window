@@ -1,0 +1,7 @@
+project_id = "memory-window"
+[functions.memory-window]
+verify_jwt = false
+[functions.stripe-webhook]
+verify_jwt = false
+[edge_runtime]
+policy = "per_worker"
